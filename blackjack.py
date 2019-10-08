@@ -9,6 +9,10 @@ import random as rn # will be used as a means of shuffling the deck
 import tkinter as tk
 
 
+assets_folder = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 
+                                             'assets/'))
+
+
 class Card(object):
     '''
     This class defines a card object
@@ -25,6 +29,10 @@ class Card(object):
         return ' of '.join((self.value, self.suit))
         # 'member the .join() method takes an iterable argument, therefore
         # we store the values into a tuple
+        
+    def get_back_file(self, cls):
+        cls.back = tk.PhotoImage(file=assets_folder + "/back.png")
+        return cls.back    
         
         
 class Deck():
