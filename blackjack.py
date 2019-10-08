@@ -4,8 +4,9 @@ Created on May 28, 2019
 
 @author:toni
 '''
-
+import os
 import random as rn # will be used as a means of shuffling the deck
+import tkinter as tk
 
 
 class Card(object):
