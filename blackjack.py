@@ -81,10 +81,15 @@ class Hand():
                 else:
                     self.value += 10
         if has_ace and self.value > 21:
-            if self.value-10 <= 21:
+#             if self.value-10 <= 21:
+#                 self.value -= 10
+#             else:
+#                 self.value -= aces*10
+            soft_ace = 0
+            while self.value > 21 and soft_ace != aces:
                 self.value -= 10
-            else:
-                self.value -= aces*10
+                soft_ace += 1
+                
                     
     def get_value(self):
         self.calculate_value()
@@ -186,9 +191,11 @@ class Game:
     def check_for_blackjack(self):
             player = False
             dealer = False
-            if self.player_hand.get_value() == 21:
+            if self.player_hand.get_value() == 21 and\
+             len(self.player_hand.cards) == 2:
                 player = True
-            if self.dealer_hand.get_value() == 21:
+            if self.dealer_hand.get_value() == 21 and\
+             len(self.dealer_hand.cards) == 2:
                 dealer = True
             return player, dealer
         
@@ -200,6 +207,9 @@ class Game:
         elif player_has_blackjack:
             print("You have blackjack! You win!")
         elif dealer_has_blackjack:
+            print("Dealer's hand:")
+            self.dealer_hand.dealer = False
+            self.dealer_hand.display()
             print("Dealer has blackjack! Dealer wins!")
             
             
