@@ -140,7 +140,8 @@ class Game:
                 
                 choice = input("Please choose [Hit(h) / Stick(s)] ").lower()
                 while choice not in ["h", "s", "hit", "stick"]:
-                    choice = input("Please enter 'hit' or 'stick' (or h/s) ").lower()
+                    choice = input("Please enter 'hit' or 'stick' (or h/s) ")\
+                     .lower()
                 
                 if choice in ['hit', 'h']:
                     self.player_hand.add_card(self.deck.deal())
